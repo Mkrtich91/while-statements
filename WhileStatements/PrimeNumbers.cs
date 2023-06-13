@@ -4,20 +4,63 @@
     {
         public static bool IsPrimeNumber(uint n)
         {
-            // TODO 5-1. Implement the method that returns true if n is a prime number; otherwise returns false.
-            throw new NotImplementedException();
+            if (n <= 1)
+            {
+                return false;
+            }
+
+            uint i = 2;
+            while (i * i <= n)
+            {
+                if (n % i == 0)
+                {
+                    return false;
+                }
+
+                i++;
+            }
+
+            return true;
         }
 
         public static uint GetLastPrimeNumber(uint n)
         {
-            // TODO 5-2. Implement the method that returns the latest prime number is (0, n] interval.
-            throw new NotImplementedException();
+            if (n < 2)
+            {
+                return 0;
+            }
+
+            while (n >= 2)
+            {
+                if (IsPrimeNumber(n))
+                {
+                    return n;
+                }
+
+                n--;
+            }
+
+            return 0;
         }
 
         public static uint SumLastPrimeNumbers(uint n, uint count)
         {
-            // TODO 5-3. Implement the method that returns the sum of the latest _count_ prime numbers is (0, n] interval.
-            throw new NotImplementedException();
+            uint sum = 0;
+            uint primesFound = 0;
+            uint currentNumber = n;
+
+            while (currentNumber > 0 && primesFound < count)
+            {
+                if (IsPrimeNumber(currentNumber))
+                {
+                    sum += currentNumber;
+                    primesFound++;
+                }
+
+                currentNumber--;
+            }
+
+            return sum;
         }
     }
 }

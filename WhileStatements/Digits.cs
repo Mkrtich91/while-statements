@@ -4,14 +4,38 @@
     {
         public static ulong GetDigitsSum(ulong n)
         {
-            // TODO 4-1. Implement the method that returns sum of digits of a number.
-            throw new NotImplementedException();
+            ulong sum = 0;
+            ulong num = n;
+
+            while (num != 0)
+            {
+                ulong digit = num % 10;
+                sum += digit;
+                num /= 10;
+            }
+
+            return sum;
         }
 
         public static ulong GetDigitsProduct(ulong n)
         {
-            // TODO 4-2. Implement the method that returns product of digits of a number.
-            throw new NotImplementedException();
+            ulong product = 1;
+            ulong num = n;
+            if (num != 0)
+            {
+                while (num != 0)
+                {
+                    ulong digit = num % 10;
+                    product *= digit;
+                    num /= 10;
+                }
+
+                return product;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
